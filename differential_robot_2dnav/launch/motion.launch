@@ -1,0 +1,5 @@
+<launch>
+
+<node pkg="diff_wheeled_robot_control" name="motion_planner1" type="motion_planner1.py" output="screen"/>	
+	
+</launch>

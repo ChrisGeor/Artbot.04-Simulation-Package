@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<launch>
+
+
+ <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+ <rosparam file="$(find differential_robot_2dnav)/launch/costmap_common_params.yaml" command="load" ns="global_costmap"  />
+ <rosparam file="$(find differential_robot_2dnav)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" />
+ <rosparam file="$(find differential_robot_2dnav)/launch/local_costmap_params.yaml" command="load" />
+ <rosparam file="$(find differential_robot_2dnav)/launch/global_costmap_params.yaml" command="load" />
+ <rosparam file="$(find differential_robot_2dnav)/launch/base_local_planner_params.yaml" command="load" />
+ 
+ <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+ <param name="controller_frequency" value="10.0" />
+ 
+ </node>
+ 
+ <node pkg="diff_wheeled_robot_control" name="pubish_points" type="publish_points.py" output="screen"/>
+ 
+</launch>
